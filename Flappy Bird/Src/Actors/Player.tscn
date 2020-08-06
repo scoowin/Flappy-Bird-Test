@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/flapsheet.png" type="Texture" id=1]
+[ext_resource path="res://Src/Actors/Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 280, 230 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 717, 610 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 717, 0, 717, 610 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1434, 0, 717, 610 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2151, 0, 717, 610 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.15, 0.15 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+frame = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 300, 0 )
+current = true
+limit_top = 0
+limit_bottom = 1920
