@@ -24,3 +24,5 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite.play("default")
 		velocity = move_and_slide(velocity, FLOOR_NORMAL)
 		velocity.y += gravity
+		if self.position.y > 1700:
+			die()
